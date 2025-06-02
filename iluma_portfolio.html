@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iluma Tech Services - Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #b1d245;
+            --primary-black: #000000;
+            --primary-cream: #e4e0d7;
+            --white: #ffffff;
+            --gray-light: #f8f8f8;
+            --gray-medium: #666666;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-black);
+            background: var(--primary-cream);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px var(--shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-black);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        nav a:hover {
+            background: var(--primary-green);
+            color: var(--primary-black);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: var(--primary-black);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(177, 210, 69, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            color: var(--primary-green);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-green);
+            color: var(--primary-black);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(177, 210, 69, 0.4);
+        }
+
+        .section {
+            background: var(--white);
+            margin: 3rem 0;
+            padding: 4rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .section h2 {
+            font-family: 'League Spartan', sans-serif;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary-black);
+            letter-spacing: -0.02em;
+        }
+
+        .section h2 .highlight {
+            color: var(--primary-green);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--gray-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-green);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: var(--primary-green);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            filter: grayscale(0%);
+        }
+
+        .service-card h3 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-cream);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .project-type {
+            background: var(--primary-green);
+            color: var(--primary-black);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-header h3 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            font-weight: 400;
+        }
+
+        .project-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .why-choose {
+            background: var(--primary-cream);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+
+        .why-choose:hover {
+            transform: translateX(10px);
+        }
+
+        .why-choose h3 {
+            font-family: 'League Spartan', sans-serif;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .why-choose .icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            background: var(--primary-black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        footer h2 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        footer h2 .highlight {
+            color: var(--primary-green);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            background: var(--primary-green);
+            color: var(--primary-black);
+            padding: 1.2rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(177, 210, 69, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-medium);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section h2 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-cream);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: var(--primary-green);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Iluma Tech Services</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#projects">Projetos</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformamos <span class="highlight">Dados</span> em <span class="highlight">Estratégia</span></h1>
+                <p>Consultoria especializada em automação, análise de dados e dashboards personalizados para o crescimento do seu negócio</p>
+                <a href="#contact" class="cta-button">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Nossos <span class="highlight">Serviços</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Dashboards Interativos</h3>
+                    <p>Transformação de dados brutos em informações estratégicas com visualizações claras e intuitivas no Power BI</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Automações Inteligentes</h3>
+                    <p>Implementação de automações em Python, SQL e Excel para otimizar processos e economizar tempo valioso</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Análise de Dados</h3>
+                    <p>Desenvolvimento de relatórios analíticos e insights estratégicos para tomada de decisões embasadas</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Planilhas Personalizadas</h3>
+                    <p>Criação de planilhas sob medida para gestão financeira e operacional do seu negócio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Nossos <span class="highlight">Projetos</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Automações</div>
+                        <h3>Bot WhatsApp para Consultórios</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Bot para envio automático de mensagens no WhatsApp, com foco em lembretes e confirmações de consultas agendadas em consultórios médicos.</p>
+                        <ul class="project-features">
+                            <li>Bot de mensagens automatizado</li>
+                            <li>Integração com APIs externas</li>
+                            <li>Modelagem de dados personalizada</li>
+                            <li>Otimização de fluxos de trabalho</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Automações</div>
+                        <h3>Extração de Dados de PDFs</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Automação para extração de dados de mais de 60 faturas de energia em quatro modelos distintos, gerando relatórios consolidados.</p>
+                        <ul class="project-features">
+                            <li>Extração automatizada de dados</li>
+                            <li>Configuração para diferentes modelos</li>
+                            <li>Desenvolvimento de relatórios dinâmicos</li>
+                            <li>Geração de planilhas com métricas-chave</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Dashboards</div>
+                        <h3>Dashboard Jira - Gestão de Projetos</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Dashboard em Power BI para monitorar em tempo real tarefas e indicadores do Jira, com foco no gerenciamento de projetos.</p>
+                        <ul class="project-features">
+                            <li>KPIs para gerenciamento de projetos</li>
+                            <li>Limpeza e padronização dos dados</li>
+                            <li>Integração automática com Google Sheets</li>
+                            <li>Monitoramento de performance em tempo real</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Dashboards</div>
+                        <h3>E-commerce de Bicicletas e Acessórios</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Dashboard criado no Power BI para monitorar vendas em tempo real de um e-commerce especializado em bicicletas e acessórios.</p>
+                        <ul class="project-features">
+                            <li>KPIs estratégicos de vendas</li>
+                            <li>Visuais personalizáveis e intuitivos</li>
+                            <li>Dados atualizados em tempo real</li>
+                            <li>Filtros automatizados por categoria</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Insights Estratégicos</div>
+                        <h3>Análise Airbnb Nova York</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Análise exploratória das propostas de hospedagem no Airbnb em Nova York para otimizar visualização de buscas e conversões.</p>
+                        <ul class="project-features">
+                            <li>Tratamento e limpeza de dados complexos</li>
+                            <li>Análise exploratória aprofundada</li>
+                            <li>Gráficos analíticos personalizados</li>
+                            <li>Insights para tomada de decisão estratégica</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Insights Estratégicos</div>
+                        <h3>Mapa Temático São José dos Campos</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Criação de mapa temático do município mostrando uso e ocupação da terra e índice de absorção de CO2 para análise ambiental.</p>
+                        <ul class="project-features">
+                            <li>Manipulação de dados geoespaciais</li>
+                            <li>Criação de mapas temáticos interativos</li>
+                            <li>Visualizações especializadas em GIS</li>
+                            <li>Criação e manutenção de banco de dados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Por que escolher a <span class="highlight">Iluma Tech Services</span>?</h2>
+            <div class="why-choose-grid">
+                <div class="why-choose">
+                    <h3><span class="icon">🎯</span>Compromisso com o Cliente</h3>
+                    <p>Nosso lema é entregar soluções que sempre atendam ou superem a expectativa dos clientes, garantindo satisfação total em cada projeto.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">📈</span>Foco em Resultados</h3>
+                    <p>Nosso objetivo é transformar dados em ferramentas estratégicas para o crescimento do seu negócio, gerando valor real e mensurável.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">🤝</span>Parceria Contínua</h3>
+                    <p>Oferecemos acompanhamento dedicado e garantimos o sucesso e a eficácia das soluções implementadas, mantendo uma parceria de longo prazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Entre em <span class="highlight">Contato</span></h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9;">Vamos conversar sobre como podemos transformar os dados do seu negócio em estratégia?</p>
+            <div class="contact-info">
+                <a href="mailto:contato@ilumatechservices.com" class="contact-item">
+                    📧 contato@ilumatechservices.com
+                </a>
+                <a href="https://wa.me/5512999999999" class="contact-item">
+                    📱 WhatsApp
+                </a>
+                <a href="https://linkedin.com/company/ilumatechservices" class="contact-item">
+                    💼 LinkedIn
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Iluma Tech Services. Todos os direitos reservados.</p>
+                <p>Transformando dados em ferramentas estratégicas para o crescimento do seu negócio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.project-card, .service-card, .why-choose').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle (if needed)
+        const mobileMenuToggle = () => {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('mobile-open');
+        };
+    </script>
+</body>
+</html>
