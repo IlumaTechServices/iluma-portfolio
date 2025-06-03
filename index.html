@@ -305,12 +305,6 @@
             object-fit: cover;
             transition: all 0.5s ease;
             cursor: pointer;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 1rem;
         }
 
         .project-card:hover .project-image {
@@ -322,10 +316,6 @@
             height: 200px;
             position: relative;
             cursor: pointer;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .project-image-overlay {
@@ -350,6 +340,102 @@
 
         .project-card:hover .project-image-overlay {
             opacity: 1;
+        }
+
+        /* Modal para visualização ampliada */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--primary-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-close:hover {
+            background: var(--white);
+            color: var(--primary-black);
+            transform: scale(1.1);
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-family: 'Agrandir', sans-serif;
+        }
+
+        .modal-info h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .project-header {
@@ -649,9 +735,9 @@
             <h2>Nossos <span class="highlight">Projetos</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem do Bot WhatsApp]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/bot-whatsapp.jpg', 'Bot WhatsApp para Consultórios')">
+                        <img src="images/bot-whatsapp.jpg" alt="Dashboard do Bot WhatsApp" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -671,9 +757,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem Extração PDFs]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/extracao-pdfs.jpg', 'Extração de Dados de PDFs')">
+                        <img src="images/extracao-pdfs.jpg" alt="Relatório de Extração de PDFs" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -693,9 +779,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem Dashboard Jira]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/dashboard-jira.jpg', 'Dashboard Jira - Gestão de Projetos')">
+                        <img src="images/dashboard-jira.jpg" alt="Dashboard Jira no Power BI" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -715,9 +801,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem E-commerce]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/dashboard-ecommerce.jpg', 'E-commerce de Bicicletas e Acessórios')">
+                        <img src="images/dashboard-ecommerce.jpg" alt="Dashboard E-commerce de Bicicletas" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -737,9 +823,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem Análise Airbnb]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/analise-airbnb.jpg', 'Análise Airbnb Nova York')">
+                        <img src="images/analise-airbnb.jpg" alt="Análise de Dados Airbnb Nova York" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
@@ -759,9 +845,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
-                        <div class="project-image">[Imagem Mapa SJC]</div>
-                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    <div class="project-image-container" onclick="openModal('images/mapa-sjc.jpg', 'Mapa Temático São José dos Campos')">
+                        <img src="images/mapa-sjc.jpg" alt="Mapa Temático São José dos Campos" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
