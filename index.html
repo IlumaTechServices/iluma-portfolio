@@ -234,17 +234,17 @@
             margin: 3rem 0;
         }
 
-        .service-card {
-            background: var(--gray-light);
+                .service-card {
+            background: var(--primary-black) !important;
             padding: 2.5rem;
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
-            border: 3px solid transparent;
+            border: 2px solid rgba(177, 210, 69, 0.3);
             position: relative;
             overflow: hidden;
         }
-
+        
         .service-card::before {
             content: '';
             position: absolute;
@@ -256,24 +256,39 @@
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
-
+        
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px var(--shadow);
+            box-shadow: 0 20px 40px rgba(177, 210, 69, 0.3);
             border-color: var(--primary-green);
         }
-
+        
         .service-card:hover::before {
             transform: scaleX(1);
         }
-
+        
+        .service-card h3 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-green) !important;
+        }
+        
+        .service-card p {
+            font-family: 'TT Chocolates', 'Agrandir', 'Anton', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--white) !important;
+        }
+        
         .service-icon {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             filter: grayscale(100%);
             transition: filter 0.3s ease;
         }
-
+        
         .service-card:hover .service-icon {
             filter: grayscale(0%);
         }
