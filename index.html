@@ -66,12 +66,18 @@
         }
 
         .logo {
-            font-family: 'Anton', sans-serif;
-            font-size: 2rem;
-            font-weight: 400;
-            color: var(--primary-green);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         nav ul {
@@ -107,17 +113,6 @@
             min-height: 70vh;
             display: flex;
             align-items: center;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-            z-index: 1;
         }
 
         .hero::before {
@@ -310,6 +305,12 @@
             object-fit: cover;
             transition: all 0.5s ease;
             cursor: pointer;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1rem;
         }
 
         .project-card:hover .project-image {
@@ -321,6 +322,10 @@
             height: 200px;
             position: relative;
             cursor: pointer;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .project-image-overlay {
@@ -345,102 +350,6 @@
 
         .project-card:hover .project-image-overlay {
             opacity: 1;
-        }
-
-        /* Modal para visualização ampliada */
-        .image-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .image-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            margin: auto;
-            animation: zoomIn 0.3s ease;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--primary-green);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-        }
-
-        .modal-close:hover {
-            background: var(--white);
-            color: var(--primary-black);
-            transform: scale(1.1);
-        }
-
-        .modal-info {
-            position: absolute;
-            bottom: -80px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            font-family: 'Agrandir', sans-serif;
-        }
-
-        .modal-info h3 {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: var(--primary-green);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-            from { 
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to { 
-                transform: scale(1);
-                opacity: 1;
-            }
         }
 
         .project-header {
@@ -653,12 +562,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .hero-video {
-                width: 90%;
-                max-width: 400px;
-                height: 200px;
-            }
         }
 
         .scroll-indicator {
@@ -687,7 +590,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">Iluma Tech Services</div>
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Iluma Tech Services">
+                </div>
                 <nav>
                     <ul>
                         <li><a href="#home">Início</a></li>
@@ -702,14 +607,6 @@
     </header>
 
     <section id="home" class="hero">
-        <!-- Vídeo de fundo -->
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="videos/hero-background.mp4" type="video/mp4">
-            <source src="videos/hero-background.webm" type="video/webm">
-            <!-- Fallback para navegadores que não suportam vídeo -->
-            Seu navegador não suporta vídeos HTML5.
-        </video>
-        
         <div class="container">
             <div class="hero-content">
                 <h1>Transformamos <span class="highlight">Dados</span> em <span class="highlight">Estratégia</span>.</h1>
@@ -752,9 +649,9 @@
             <h2>Nossos <span class="highlight">Projetos</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image-container" onclick="openModal('images/bot-whatsapp.jpg', 'Bot WhatsApp para Consultórios')">
-                        <img src="images/bot-whatsapp.jpg" alt="Dashboard do Bot WhatsApp" class="project-image">
-                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem do Bot WhatsApp]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -774,9 +671,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container" onclick="openModal('images/extracao-pdfs.jpg', 'Extração de Dados de PDFs')">
-                        <img src="images/extracao-pdfs.jpg" alt="Relatório de Extração de PDFs" class="project-image">
-                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem Extração PDFs]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -796,9 +693,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container" onclick="openModal('images/dashboard-jira.jpg', 'Dashboard Jira - Gestão de Projetos')">
-                        <img src="images/dashboard-jira.jpg" alt="Dashboard Jira no Power BI" class="project-image">
-                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem Dashboard Jira]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -818,9 +715,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container" onclick="openModal('images/dashboard-ecommerce.jpg', 'E-commerce de Bicicletas e Acessórios')">
-                        <img src="images/dashboard-ecommerce.jpg" alt="Dashboard E-commerce de Bicicletas" class="project-image">
-                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem E-commerce]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -832,3 +729,97 @@
                             <ul class="project-features">
                                 <li>KPIs estratégicos de vendas</li>
                                 <li>Visuais personalizáveis e intuitivos</li>
+                                <li>Dados atualizados em tempo real</li>
+                                <li>Filtros automatizados por categoria</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem Análise Airbnb]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-type">Insights Estratégicos</div>
+                        <h3>Análise Airbnb Nova York</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            <p>Análise exploratória das propostas de hospedagem no Airbnb em Nova York para otimizar visualização de buscas e conversões.</p>
+                            <ul class="project-features">
+                                <li>Tratamento e limpeza de dados complexos</li>
+                                <li>Análise exploratória aprofundada</li>
+                                <li>Gráficos analíticos personalizados</li>
+                                <li>Insights para tomada de decisão estratégica</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="project-image">[Imagem Mapa SJC]</div>
+                        <div class="project-image-overlay">🔍 Ver Projeto</div>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-type">Insights Estratégicos</div>
+                        <h3>Mapa Temático São José dos Campos</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            <p>Criação de mapa temático do município mostrando uso e ocupação da terra e índice de absorção de CO2 para análise ambiental.</p>
+                            <ul class="project-features">
+                                <li>Manipulação de dados geoespaciais</li>
+                                <li>Criação de mapas temáticos interativos</li>
+                                <li>Visualizações especializadas em GIS</li>
+                                <li>Criação e manutenção de banco de dados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Por que escolher a <span class="highlight">Iluma Tech Services</span>?</h2>
+            <div class="why-choose-grid">
+                <div class="why-choose">
+                    <h3><span class="icon">🎯</span>Compromisso com o Cliente</h3>
+                    <p>Nosso lema é entregar soluções que sempre atendam ou superem a expectativa dos clientes, garantindo satisfação total em cada projeto.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">📈</span>Foco em Resultados</h3>
+                    <p>Nosso objetivo é transformar dados em ferramentas estratégicas para o crescimento do seu negócio, gerando valor real e mensurável.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">🤝</span>Parceria Contínua</h3>
+                    <p>Oferecemos acompanhamento dedicado e garantimos o sucesso e a eficácia das soluções implementadas, mantendo uma parceria de longo prazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Entre em <span class="highlight">Contato</span></h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; font-family: 'Agrandir', sans-serif;">Vamos conversar sobre como podemos transformar os dados do seu negócio em estratégia?</p>
+            <div class="contact-info">
+                <a href="mailto:ilumatechservices@gmail.com" class="contact-item">
+                    📧 ilumatechservices@gmail.com
+                </a>
+                <a href="https://wa.me/5512997179907" class="contact-item">
+                    📱 WhatsApp
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Iluma Tech Services. Todos os direitos reservados.</p>
+                <p>Transformando dados em ferramentas estratégicas para o crescimento do seu negócio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
