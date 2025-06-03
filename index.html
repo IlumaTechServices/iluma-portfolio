@@ -6,9 +6,32 @@
     <title>Iluma Tech Services - Portfólio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700;800&family=Anton&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        @font-face {
+            font-family: 'TT Chocolates';
+            src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/inter/Inter-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'TT Chocolates';
+            src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/inter/Inter-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'TT Chocolates';
+            src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/inter/Inter-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Agrandir';
+            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+            font-weight: 400;
+            font-style: normal;
+        }
         
         * {
             margin: 0;
@@ -27,11 +50,12 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
             line-height: 1.6;
             color: var(--primary-black);
             background: var(--primary-cream);
             min-height: 100vh;
+            font-weight: 400;
         }
 
         .container {
@@ -58,12 +82,12 @@
         }
 
         .logo {
-            font-family: 'League Spartan', sans-serif;
+            font-family: 'Anton', 'League Spartan', sans-serif;
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 400;
             color: var(--primary-green);
             text-transform: uppercase;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.5px;
         }
 
         nav ul {
@@ -75,6 +99,7 @@
         nav a {
             text-decoration: none;
             color: var(--primary-black);
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
             font-weight: 500;
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
@@ -143,6 +168,7 @@
             padding: 1.2rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
@@ -174,6 +200,7 @@
             margin-bottom: 3rem;
             color: var(--primary-black);
             letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .section h2 .highlight {
@@ -239,6 +266,12 @@
             color: var(--primary-black);
         }
 
+        .service-card p {
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -266,17 +299,19 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: all 0.5s ease;
+            cursor: pointer;
         }
 
         .project-card:hover .project-image {
-            transform: scale(1.05);
+            transform: scale(1.15);
         }
 
         .project-image-container {
             overflow: hidden;
             height: 200px;
             position: relative;
+            cursor: pointer;
         }
 
         .project-image-overlay {
@@ -285,18 +320,115 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(177, 210, 69, 0.8), rgba(0, 0, 0, 0.6));
+            background: linear-gradient(45deg, rgba(177, 210, 69, 0.9), rgba(0, 0, 0, 0.7));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
             font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .project-card:hover .project-image-overlay {
             opacity: 1;
+        }
+
+        /* Modal para visualização ampliada */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--primary-green);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-close:hover {
+            background: var(--white);
+            color: var(--primary-black);
+            transform: scale(1.1);
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-family: 'TT Chocolates', sans-serif;
+        }
+
+        .modal-info h3 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .project-header {
@@ -383,6 +515,12 @@
             margin-bottom: 1rem;
             font-size: 1.3rem;
             font-weight: 600;
+        }
+
+        .why-choose p {
+            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         .why-choose .icon {
@@ -573,9 +711,9 @@
             <h2>Nossos <span class="highlight">Projetos</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/bot-whatsapp.jpg', 'Bot WhatsApp para Consultórios')">
                         <img src="images/bot-whatsapp.jpg" alt="Dashboard do Bot WhatsApp" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -595,9 +733,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/extracao-pdfs.jpg', 'Extração de Dados de PDFs')">
                         <img src="images/extracao-pdfs.jpg" alt="Relatório de Extração de PDFs" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
@@ -617,9 +755,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/dashboard-jira.jpg', 'Dashboard Jira - Gestão de Projetos')">
                         <img src="images/dashboard-jira.jpg" alt="Dashboard Jira no Power BI" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -639,9 +777,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/dashboard-ecommerce.jpg', 'E-commerce de Bicicletas e Acessórios')">
                         <img src="images/dashboard-ecommerce.jpg" alt="Dashboard E-commerce de Bicicletas" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
@@ -661,9 +799,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/analise-airbnb.jpg', 'Análise Airbnb Nova York')">
                         <img src="images/analise-airbnb.jpg" alt="Análise de Dados Airbnb Nova York" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
@@ -683,9 +821,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image-container">
+                    <div class="project-image-container" onclick="openModal('images/mapa-sjc.jpg', 'Mapa Temático São José dos Campos')">
                         <img src="images/mapa-sjc.jpg" alt="Mapa Temático São José dos Campos" class="project-image">
-                        <div class="project-image-overlay">Ver Projeto</div>
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
                     </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
@@ -730,7 +868,7 @@
     <footer id="contact">
         <div class="container">
             <h2>Entre em <span class="highlight">Contato</span></h2>
-            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9;">Vamos conversar sobre como podemos transformar os dados do seu negócio em estratégia?</p>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; font-family: 'TT Chocolates', 'Agrandir', sans-serif;">Vamos conversar sobre como podemos transformar os dados do seu negócio em estratégia?</p>
             <div class="contact-info">
                 <a href="mailto:contato@ilumatechservices.com" class="contact-item">
                     📧 contato@ilumatechservices.com
@@ -749,7 +887,56 @@
         </div>
     </footer>
 
+    <!-- Modal para visualização ampliada das imagens -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p>Clique no X ou fora da imagem para fechar</p>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Função para abrir modal com imagem ampliada
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            
+            // Prevenir scroll do body quando modal estiver aberto
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            
+            // Restaurar scroll do body
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal clicando fora da imagem
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
