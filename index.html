@@ -50,10 +50,10 @@
         }
 
         body {
-            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
+            font-family: 'TT Chocolates', 'Agrandir', 'Anton', sans-serif;
             line-height: 1.6;
-            color: var(--primary-black);
-            background: var(--primary-cream);
+            color: var(--white);
+            background: var(--primary-black);
             min-height: 100vh;
             font-weight: 400;
         }
@@ -65,13 +65,15 @@
         }
 
         header {
-            background: var(--white);
-            box-shadow: 0 4px 20px var(--shadow);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(177, 210, 69, 0.2);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
             transition: transform 0.3s ease;
+            border-bottom: 1px solid rgba(177, 210, 69, 0.3);
         }
 
         .header-content {
@@ -98,8 +100,8 @@
 
         nav a {
             text-decoration: none;
-            color: var(--primary-black);
-            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
+            color: var(--white);
+            font-family: 'TT Chocolates', 'Agrandir', 'Anton', sans-serif;
             font-weight: 500;
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
@@ -117,23 +119,25 @@
             background: var(--primary-black);
             color: var(--white);
             text-align: center;
-            padding: 6rem 0;
+            padding: 4rem 0;
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
         }
 
         .hero-video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
             object-fit: cover;
-            opacity: 0.3;
+            opacity: 0.2;
             z-index: 1;
+            border-radius: 20px;
         }
 
         .hero::before {
@@ -201,11 +205,13 @@
         }
 
         .section {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             margin: 3rem 0;
             padding: 4rem 0;
             border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow);
+            box-shadow: 0 10px 30px rgba(177, 210, 69, 0.1);
+            border: 1px solid rgba(177, 210, 69, 0.2);
         }
 
         .section h2 {
@@ -214,7 +220,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 3rem;
-            color: var(--primary-black);
+            color: var(--white);
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
@@ -296,19 +302,21 @@
         }
 
         .project-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 25px var(--shadow);
+            box-shadow: 0 8px 25px rgba(177, 210, 69, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid var(--primary-cream);
+            border: 1px solid rgba(177, 210, 69, 0.2);
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px rgba(177, 210, 69, 0.2);
+            border-color: var(--primary-green);
         }
 
         .project-image {
@@ -514,29 +522,33 @@
         }
 
         .why-choose {
-            background: var(--primary-cream);
+            background: rgba(177, 210, 69, 0.1);
+            backdrop-filter: blur(10px);
             padding: 2.5rem;
             border-radius: 15px;
             border-left: 5px solid var(--primary-green);
             transition: transform 0.3s ease;
+            border: 1px solid rgba(177, 210, 69, 0.3);
         }
 
         .why-choose:hover {
             transform: translateX(10px);
+            background: rgba(177, 210, 69, 0.15);
         }
 
         .why-choose h3 {
             font-family: 'League Spartan', sans-serif;
-            color: var(--primary-black);
+            color: var(--white);
             margin-bottom: 1rem;
             font-size: 1.3rem;
             font-weight: 600;
         }
 
         .why-choose p {
-            font-family: 'TT Chocolates', 'Agrandir', sans-serif;
+            font-family: 'TT Chocolates', 'Agrandir', 'Anton', sans-serif;
             font-weight: 400;
             line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .why-choose .icon {
@@ -611,11 +623,12 @@
 
         @media (max-width: 768px) {
             .hero {
-                min-height: 80vh;
+                min-height: 60vh;
+                padding: 3rem 0;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
@@ -648,8 +661,8 @@
             }
 
             .hero-video {
-                height: 120%;
-                top: -10%;
+                width: 80%;
+                height: 50%;
             }
         }
 
@@ -704,8 +717,8 @@
         
         <div class="container">
             <div class="hero-content">
-                <h1>Transformamos <span class="highlight">Dados</span> em <span class="highlight">Estratégia</span></h1>
-                <p>Consultoria especializada em automação, análise de dados e dashboards personalizados para o crescimento do seu negócio</p>
+                <h1>Pare de <span class="highlight">Adivinhar</span>. Comece a <span class="highlight">Saber</span>.</h1>
+                <p>Transformamos dados complexos em decisões inteligentes que aceleram o crescimento do seu negócio</p>
                 <a href="#contact" class="cta-button">Fale Conosco</a>
             </div>
         </div>
