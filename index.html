@@ -253,11 +253,50 @@
             box-shadow: 0 8px 25px var(--shadow);
             transition: all 0.3s ease;
             border: 1px solid var(--primary-cream);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-image-container {
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+
+        .project-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(177, 210, 69, 0.8), rgba(0, 0, 0, 0.6));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .project-card:hover .project-image-overlay {
+            opacity: 1;
         }
 
         .project-header {
@@ -289,6 +328,13 @@
 
         .project-content {
             padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            flex: 1;
         }
 
         .project-features {
@@ -527,98 +573,134 @@
             <h2>Nossos <span class="highlight">Projetos</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/bot-whatsapp.jpg" alt="Dashboard do Bot WhatsApp" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
                         <h3>Bot WhatsApp para Consultórios</h3>
                     </div>
                     <div class="project-content">
-                        <p>Bot para envio automático de mensagens no WhatsApp, com foco em lembretes e confirmações de consultas agendadas em consultórios médicos.</p>
-                        <ul class="project-features">
-                            <li>Bot de mensagens automatizado</li>
-                            <li>Integração com APIs externas</li>
-                            <li>Modelagem de dados personalizada</li>
-                            <li>Otimização de fluxos de trabalho</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Bot para envio automático de mensagens no WhatsApp, com foco em lembretes e confirmações de consultas agendadas em consultórios médicos.</p>
+                            <ul class="project-features">
+                                <li>Bot de mensagens automatizado</li>
+                                <li>Integração com APIs externas</li>
+                                <li>Modelagem de dados personalizada</li>
+                                <li>Otimização de fluxos de trabalho</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/extracao-pdfs.jpg" alt="Relatório de Extração de PDFs" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Automações</div>
                         <h3>Extração de Dados de PDFs</h3>
                     </div>
                     <div class="project-content">
-                        <p>Automação para extração de dados de mais de 60 faturas de energia em quatro modelos distintos, gerando relatórios consolidados.</p>
-                        <ul class="project-features">
-                            <li>Extração automatizada de dados</li>
-                            <li>Configuração para diferentes modelos</li>
-                            <li>Desenvolvimento de relatórios dinâmicos</li>
-                            <li>Geração de planilhas com métricas-chave</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Automação para extração de dados de mais de 60 faturas de energia em quatro modelos distintos, gerando relatórios consolidados.</p>
+                            <ul class="project-features">
+                                <li>Extração automatizada de dados</li>
+                                <li>Configuração para diferentes modelos</li>
+                                <li>Desenvolvimento de relatórios dinâmicos</li>
+                                <li>Geração de planilhas com métricas-chave</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/dashboard-jira.jpg" alt="Dashboard Jira no Power BI" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
                         <h3>Dashboard Jira - Gestão de Projetos</h3>
                     </div>
                     <div class="project-content">
-                        <p>Dashboard em Power BI para monitorar em tempo real tarefas e indicadores do Jira, com foco no gerenciamento de projetos.</p>
-                        <ul class="project-features">
-                            <li>KPIs para gerenciamento de projetos</li>
-                            <li>Limpeza e padronização dos dados</li>
-                            <li>Integração automática com Google Sheets</li>
-                            <li>Monitoramento de performance em tempo real</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Dashboard em Power BI para monitorar em tempo real tarefas e indicadores do Jira, com foco no gerenciamento de projetos.</p>
+                            <ul class="project-features">
+                                <li>KPIs para gerenciamento de projetos</li>
+                                <li>Limpeza e padronização dos dados</li>
+                                <li>Integração automática com Google Sheets</li>
+                                <li>Monitoramento de performance em tempo real</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/dashboard-ecommerce.jpg" alt="Dashboard E-commerce de Bicicletas" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Dashboards</div>
                         <h3>E-commerce de Bicicletas e Acessórios</h3>
                     </div>
                     <div class="project-content">
-                        <p>Dashboard criado no Power BI para monitorar vendas em tempo real de um e-commerce especializado em bicicletas e acessórios.</p>
-                        <ul class="project-features">
-                            <li>KPIs estratégicos de vendas</li>
-                            <li>Visuais personalizáveis e intuitivos</li>
-                            <li>Dados atualizados em tempo real</li>
-                            <li>Filtros automatizados por categoria</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Dashboard criado no Power BI para monitorar vendas em tempo real de um e-commerce especializado em bicicletas e acessórios.</p>
+                            <ul class="project-features">
+                                <li>KPIs estratégicos de vendas</li>
+                                <li>Visuais personalizáveis e intuitivos</li>
+                                <li>Dados atualizados em tempo real</li>
+                                <li>Filtros automatizados por categoria</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/analise-airbnb.jpg" alt="Análise de Dados Airbnb Nova York" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
                         <h3>Análise Airbnb Nova York</h3>
                     </div>
                     <div class="project-content">
-                        <p>Análise exploratória das propostas de hospedagem no Airbnb em Nova York para otimizar visualização de buscas e conversões.</p>
-                        <ul class="project-features">
-                            <li>Tratamento e limpeza de dados complexos</li>
-                            <li>Análise exploratória aprofundada</li>
-                            <li>Gráficos analíticos personalizados</li>
-                            <li>Insights para tomada de decisão estratégica</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Análise exploratória das propostas de hospedagem no Airbnb em Nova York para otimizar visualização de buscas e conversões.</p>
+                            <ul class="project-features">
+                                <li>Tratamento e limpeza de dados complexos</li>
+                                <li>Análise exploratória aprofundada</li>
+                                <li>Gráficos analíticos personalizados</li>
+                                <li>Insights para tomada de decisão estratégica</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="images/mapa-sjc.jpg" alt="Mapa Temático São José dos Campos" class="project-image">
+                        <div class="project-image-overlay">Ver Projeto</div>
+                    </div>
                     <div class="project-header">
                         <div class="project-type">Insights Estratégicos</div>
                         <h3>Mapa Temático São José dos Campos</h3>
                     </div>
                     <div class="project-content">
-                        <p>Criação de mapa temático do município mostrando uso e ocupação da terra e índice de absorção de CO2 para análise ambiental.</p>
-                        <ul class="project-features">
-                            <li>Manipulação de dados geoespaciais</li>
-                            <li>Criação de mapas temáticos interativos</li>
-                            <li>Visualizações especializadas em GIS</li>
-                            <li>Criação e manutenção de banco de dados</li>
-                        </ul>
+                        <div class="project-description">
+                            <p>Criação de mapa temático do município mostrando uso e ocupação da terra e índice de absorção de CO2 para análise ambiental.</p>
+                            <ul class="project-features">
+                                <li>Manipulação de dados geoespaciais</li>
+                                <li>Criação de mapas temáticos interativos</li>
+                                <li>Visualizações especializadas em GIS</li>
+                                <li>Criação e manutenção de banco de dados</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
