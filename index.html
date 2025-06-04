@@ -38,6 +38,7 @@
             background: var(--primary-black);
             min-height: 100vh;
             font-weight: 400;
+            padding-bottom: 0;
         }
 
         .container {
@@ -558,8 +559,10 @@
             background: var(--primary-black);
             color: var(--white);
             text-align: center;
-            padding: 3rem 0;
-            margin-top: 3rem;
+            padding: 4rem 0;
+            margin-top: 4rem;
+            border-top: 2px solid var(--primary-green);
+            min-height: 400px;
         }
 
         footer h2 {
@@ -607,8 +610,9 @@
         .footer-bottom {
             border-top: 1px solid var(--gray-medium);
             padding-top: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
             opacity: 0.8;
+            padding-bottom: 2rem;
         }
 
         @keyframes fadeInUp {
@@ -1043,6 +1047,191 @@
                                 <li>Tratamento e limpeza de dados complexos</li>
                                 <li>Análise exploratória aprofundada</li>
                                 <li>Gráficos analíticos personalizados</li>
-                                <li>Insights para tomada de decisão estratégica</li>
+                                 <li>Insights para tomada de decisão estratégica</li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container" onclick="openModal('images/mapa-sjc.jpg', 'Mapa Temático São José dos Campos')">
+                        <img src="images/mapa-sjc.jpg" alt="Mapa Temático São José dos Campos" class="project-image">
+                        <div class="project-image-overlay">🔍 Ampliar Imagem</div>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-type">Insights Estratégicos</div>
+                        <h3>Mapa Temático São José dos Campos</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            <p>Criação de mapa temático do município mostrando uso e ocupação da terra e índice de absorção de CO2 para análise ambiental.</p>
+                            <ul class="project-features">
+                                <li>Manipulação de dados geoespaciais</li>
+                                <li>Criação de mapas temáticos interativos</li>
+                                <li>Visualizações especializadas em GIS</li>
+                                <li>Criação e manutenção de banco de dados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Por que escolher a <span class="highlight">Iluma Tech Services</span>?</h2>
+            <div class="why-choose-grid">
+                <div class="why-choose">
+                    <h3><span class="icon">🎯</span>Compromisso com o Cliente</h3>
+                    <p>Nosso lema é entregar soluções que sempre atendam ou superem a expectativa dos clientes, garantindo satisfação total em cada projeto.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">📈</span>Foco em Resultados</h3>
+                    <p>Nosso objetivo é transformar dados em ferramentas estratégicas para o crescimento do seu negócio, gerando valor real e mensurável.</p>
+                </div>
+                <div class="why-choose">
+                    <h3><span class="icon">🤝</span>Parceria Contínua</h3>
+                    <p>Oferecemos acompanhamento dedicado e garantimos o sucesso e a eficácia das soluções implementadas, mantendo uma parceria de longo prazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Entre em <span class="highlight">Contato</span></h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; font-family: 'TT Chocolates', 'Agrandir', sans-serif;">Vamos conversar sobre como podemos transformar os dados do seu negócio em estratégia?</p>
+            <div class="contact-info">
+                <a href="mailto:ilumatechservices@gmail.com" class="contact-item">
+                    📧 ilumatechservices@gmail.com
+                </a>
+                <a href="https://wa.me/5512997179907" class="contact-item">
+                    📱 WhatsApp
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Iluma Tech Services. Todos os direitos reservados.</p>
+                <p>Transformando dados em ferramentas estratégicas para o crescimento do seu negócio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para visualização ampliada das imagens -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p>Clique no X ou fora da imagem para fechar</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir modal com imagem ampliada
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            
+            // Prevenir scroll do body quando modal estiver aberto
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            
+            // Restaurar scroll do body
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal clicando fora da imagem
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.project-card, .service-card, .why-choose').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle (if needed)
+        const mobileMenuToggle = () => {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('mobile-open');
+        };
+    </script>
+</body>
+</html>
